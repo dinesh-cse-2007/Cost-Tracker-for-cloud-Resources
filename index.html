@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cloud Cost Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+    }
+    .form-section {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background: #3498db;
+      color: white;
+    }
+    .total {
+      text-align: right;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body><header>
+  <h1>☁️ Cloud Cost Tracker</h1>
+</header><div class="container">  <div class="form-section">
+    <h3>Add Resource Cost</h3>
+    <input type="text" id="service" placeholder="Service (e.g., EC2, S3)">
+    <input type="number" id="cost" placeholder="Cost (₹)">
+    <select id="provider">
+      <option value="AWS">AWS</option>
+      <option value="Azure">Azure</option>
+      <option value="GCP">GCP</option>
+    </select>
+    <button onclick="addCost()">Add</button>
+  </div>  <table id="costTable">
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Provider</th>
+        <th>Cost (₹)</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>  <div class="total">
+    <strong>Total Cost: ₹<span id="totalCost">0</span></strong>
+  </div></div><script>
+  let total = 0;
+
+  function addCost() {
+    const service = document.getElementById("service").value;
+    const cost = parseFloat(document.getElementById("cost").value);
+    const provider = document.getElementById("provider").value;
+
+    if (!service || isNaN(cost)) {
+      alert("Please enter valid details!");
+      return;
+    }
+
+    const table = document.getElementById("costTable").getElementsByTagName("tbody")[0];
+    const row = table.insertRow();
+
+    row.insertCell(0).innerText = service;
+    row.insertCell(1).innerText = provider;
+    row.insertCell(2).innerText = cost;
+
+    total += cost;
+    document.getElementById("totalCost").innerText = total;
+
+    document.getElementById("service").value = "";
+    document.getElementById("cost").value = "";
+  }
+</script></body>
+</html>
