@@ -2,9 +2,7 @@
 
 Smart Cloud Resource Monitoring & Cost Management Platform
 
-    
-    ---
-[![Live Demo](https://img.shields.io/badge/🚀_Live-Demo-success?style=for-the-badge)]()
+[![Live Demo](https://img.shields.io/badge/🚀_Live-Demo-success?style=for-the-badge)]( https://dinesh-cse-2007.github.io/Cost-Tracker-for-cloud-Resources/)
 
 > Replace the URL with your actual deployed project link.
 
